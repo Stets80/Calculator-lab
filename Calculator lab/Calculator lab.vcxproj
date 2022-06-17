@@ -138,7 +138,6 @@
     <ClCompile Include="buttonfactory.cpp" />
     <ClCompile Include="CalcApp.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Processor.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

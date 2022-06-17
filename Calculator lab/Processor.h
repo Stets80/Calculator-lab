@@ -20,6 +20,27 @@ public:
 	Processor(Processor& other) = delete;
 	void operator=(const Processor& other) = delete;
 
+	std::string GetAddition(int _num1, int _num2)
+	{
+		std::string add = std::to_string(_num1 + _num2);
+		return add;
+	}
+	std::string GetSubtraction(int _num1, int _num2)
+	{
+		std::string sub = std::to_string(_num1 - _num2);
+		return sub;
+	}
+	std::string GetDivide(int _num1, int _num2)
+	{
+		std::string div = std::to_string(_num1 / _num2);
+		return div;
+	}
+	std::string GetMultiply(int _num1, int _num2)
+	{
+		std::string multi = std::to_string(_num1 * _num2);
+		return multi;
+
+	}
 	std::string GetDecimal() {
 		return std::to_string(baseNumber);
 	}
@@ -37,30 +58,30 @@ public:
 			{
 				result = "A" + result;
 			}
-			else if (mod == 12)
+			else if (mod == 11)
 			{
 				result = "B" + result;
 			}
-			else if (mod == 13)
+			else if (mod == 12)
 			{
 				result = "C" + result;
 			}
-			else if (mod == 14)
+			else if (mod == 13)
 			{
 				result = "D" + result;
 			}
-			else if (mod == 15)
+			else if (mod == 14)
 			{
 				result = "E" + result;
 			}
-			else if (mod == 16)
+			else if (mod == 15)
 			{
 				result = "F" + result;
 			}
 			num = num / 16;
 
-			result = "0x" + result;
 		}
+		result = "0x" + result;
 
 		return result;
 	}
@@ -69,16 +90,17 @@ public:
 		int num = baseNumber;
 		for (int i = 0; i < 32; i++)
 		{
-			if (baseNumber % 2 == 0) {
+			if (num % 2 == 0) {
 				result = "0" + result;
 			}
 			else {
 				result = "1" + result;
 			}
+			num = num / 2;
 		}
-		num = num / 2;
-
 		return result;
 	}
 };
+Processor* Processor::_processor = nullptr;
+
 
