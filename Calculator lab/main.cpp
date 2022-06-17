@@ -1,6 +1,7 @@
 #include "main.h"
 #include "buttonfactory.h"
 #include "CalcApp.h"
+#include "Processor.h"
 
 wxBEGIN_EVENT_TABLE(main, wxFrame)
 EVT_BUTTON(10001, OnButtonCliked)
@@ -8,8 +9,9 @@ wxEND_EVENT_TABLE()
 
 main::main() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(50, 50), wxSize(265, 445))
 {
-	buttonfactory factory = buttonfactory(this);
+	Processor* processor = Processor::Getinstance();
 
+	buttonfactory factory = buttonfactory(this);
 
 	wxFont font(16, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false);
 
@@ -17,63 +19,38 @@ main::main() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(50, 50), wxSize(
 	txt1->SetFont(font);
 	//ROW 1
 
-	factory.btn0();
-	factory.btn1();
-	factory.btn2();
-	factory.btn3();
-	factory.btn4();
-	factory.btn5();
-	factory.btn6();
-	factory.btn7();
-	factory.btn8();
-	factory.btn9();
-	factory.btn10();
-	factory.btn11();
-	factory.btn12();
-	factory.btn13();
-	factory.btn14();
-	factory.btn15();
-	factory.btn16();
-	factory.btn17();
-	factory.btn18();
-	factory.btn19();
-	factory.btn20();
+	factory.addbuttons(this, 20, "clear", wxPoint(10, 45), wxSize(230, 50));
+	factory.addbuttons(this, 17, "Binary", wxPoint(10, 105), wxSize(50, 50));
+	factory.addbuttons(this, 16, "Hex", wxPoint(70, 105), wxSize(50, 50));
+	factory.addbuttons(this, 15, "Decimal", wxPoint(130, 105), wxSize(50, 50));
+	factory.addbuttons(this, 14, "%", wxPoint(190, 105), wxSize(50, 50));
+	//row 2
 
-	//btn = new wxButton(this, 20, "CLEAR", wxPoint(10, 45), wxSize(230, 50));
-	////ROW 2
+	factory.addbuttons(this, 7, "7", wxPoint(10, 165), wxSize(50, 50));
+	factory.addbuttons(this, 8, "8", wxPoint(70, 165), wxSize(50, 50));
+	factory.addbuttons(this, 9, "9", wxPoint(130, 165), wxSize(50, 50));
+	factory.addbuttons(this, 13, "/", wxPoint(190, 165), wxSize(50, 50));
+	//row 3
 
-	//btn = new wxButton(this, 17, "Binary", wxPoint(10, 105), wxSize(50, 50));
-	//btn = new wxButton(this, 16, "Hex", wxPoint(70, 105), wxSize(50, 50));
-	//btn = new wxButton(this, 15, "Decimal", wxPoint(130, 105), wxSize(50, 50));
-	//btn = new wxButton(this, 14, "%", wxPoint(190, 105), wxSize(50, 50));
-	////ROW 3
-	//btn = new wxButton(this, 7, "7", wxPoint(10, 165), wxSize(50, 50));
-	//btn = new wxButton(this, 8, "8", wxPoint(70, 165), wxSize(50, 50));
-	//btn = new wxButton(this, 9, "9", wxPoint(130, 165), wxSize(50, 50));
-	//btn = new wxButton(this, 13, "/", wxPoint(190, 165), wxSize(50, 50));
-	////ROW 4
+	factory.addbuttons(this, 4, "4", wxPoint(10, 225), wxSize(50, 50));
+	factory.addbuttons(this, 5, "5", wxPoint(70, 225), wxSize(50, 50));
+	factory.addbuttons(this, 6, "6", wxPoint(130, 225), wxSize(50, 50));
+	factory.addbuttons(this, 12, "*", wxPoint(190, 225), wxSize(50, 50));
+	//row 4
+	factory.addbuttons(this, 1, "1", wxPoint(10, 285), wxSize(50, 50));
+	factory.addbuttons(this, 2, "2", wxPoint(70, 285), wxSize(50, 50));
+	factory.addbuttons(this, 3, "3", wxPoint(130, 285), wxSize(50, 50));
+	factory.addbuttons(this, 11, "-", wxPoint(190, 285), wxSize(50, 50));
+	//row 5
+	factory.addbuttons(this, 19, "-/+", wxPoint(10, 345), wxSize(50, 50));
+	factory.addbuttons(this, 0, "0", wxPoint(70, 345), wxSize(50, 50));
+	factory.addbuttons(this, 18, "=", wxPoint(130, 345), wxSize(50, 50));
+	factory.addbuttons(this, 10, "+", wxPoint(190, 345), wxSize(50, 50));
 
-	//btn = new wxButton(this, 4, "4", wxPoint(10, 225), wxSize(50, 50));
-	//btn = new wxButton(this, 5, "5", wxPoint(70, 225), wxSize(50, 50));
-	//btn = new wxButton(this, 6, "6", wxPoint(130, 225), wxSize(50, 50));
-	//btn = new wxButton(this, 12, "*", wxPoint(190, 225), wxSize(50, 50));
-	////ROW 5
-
-	//btn = new wxButton(this, 1, "1", wxPoint(10, 285), wxSize(50, 50));
-	//btn = new wxButton(this, 2, "2", wxPoint(70, 285), wxSize(50, 50));
-	//btn = new wxButton(this, 3, "3", wxPoint(130, 285), wxSize(50, 50));
-	//btn = new wxButton(this, 11, "-", wxPoint(190, 285), wxSize(50, 50));
-	////ROW 6
-
-	//btn = new wxButton(this, 19, "-/+", wxPoint(10, 345), wxSize(50, 50));
-	//btn = new wxButton(this, 0, "0", wxPoint(70, 345), wxSize(50, 50));
-	//btn = new wxButton(this, 18, "=", wxPoint(130, 345), wxSize(50, 50));
-	//btn = new wxButton(this, 10, "+", wxPoint(190, 345), wxSize(50, 50));
 	
+
+
 	Bind(wxEVT_COMMAND_BUTTON_CLICKED, &main::OnButtonCliked, this);
-	
-	
-
 
 }
 
@@ -87,7 +64,6 @@ void main::OnButtonCliked(wxCommandEvent& evt)
 	{
 		txt1->AppendText(wxfacenum);
 	}
-
 	switch (evt.GetId())
 	{
 	case 10:
@@ -105,16 +81,25 @@ void main::OnButtonCliked(wxCommandEvent& evt)
 	case 14:
 		txt1->AppendText("%");
 		break;
+	case 15:
+		txt1->AppendText("Dec");
+		break;
+	case 16:
+		txt1->AppendText("Hex");
+		break;
+	case 17:
+		txt1->AppendText("Bin");
+		break;
 	case 18:
 		txt1->AppendText("=");
+	case 19:
+		txt1->AppendText("-");
+		break;
+	case 20:
+		txt1->Clear();
 		break;
 	default:
 		break;
-	}
-
-	if (idnum == 20)
-	{
-		txt1->Clear();
 	}
 }
 

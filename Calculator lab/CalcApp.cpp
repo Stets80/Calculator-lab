@@ -1,6 +1,7 @@
 #include "CalcApp.h"
 
 wxIMPLEMENT_APP(CalcApp);
+
 CalcApp::CalcApp() 
 {
 

@@ -132,11 +132,13 @@
     <ClInclude Include="buttonfactory.h" />
     <ClInclude Include="CalcApp.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="Processor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="buttonfactory.cpp" />
     <ClCompile Include="CalcApp.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Processor.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
