@@ -2,6 +2,12 @@
 #include "buttonfactory.h"
 #include "CalcApp.h"
 #include "Processor.h"
+#include <vector>
+#include "IBaseCommand.h"
+#include "add.h"
+#include "sub.h"
+#include "mult.h"
+#include "div.h"
 
 wxBEGIN_EVENT_TABLE(main, wxFrame)
 EVT_BUTTON(10001, OnButtonCliked)
@@ -17,6 +23,8 @@ wxString sym = "";
 
 main::main() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(50, 50), wxSize(265, 445))
 {
+
+
 
 	buttonfactory factory = buttonfactory(this);
 
@@ -60,6 +68,8 @@ main::main() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(50, 50), wxSize(
 
 void main::OnButtonCliked(wxCommandEvent& evt)
 {
+
+	std::vector<IBaseCommand*> commands;
 
 	Processor* processor = Processor::Getinstance();
 	int idnum = evt.GetId();
@@ -138,31 +148,74 @@ void main::OnButtonCliked(wxCommandEvent& evt)
 		symbol = false;
 		if (sym == "+")
 		{
+			add* Add = new add();
+
 			num1 = wxAtoi(_num1);
 			num2 = wxAtoi(_num2);
+
+			Add->setnum1(num1);
+			Add->setnum2(num2);
+
+			commands.push_back(Add);
+
 			txt1->Clear();
-			txt1->AppendText(processor->GetAddition(num1, num2));
+			//txt1->AppendText(processor->GetAddition(num1, num2));
+			txt1->AppendText(commands[0]->Execute());
+
+			commands.pop_back();
+			delete Add;
 		}
 		else if (sym == "-")
 		{
+			sub* Sub = new sub();
 			num1 = wxAtoi(_num1);
 			num2 = wxAtoi(_num2);
+
+			Sub->setnum1(num1);
+			Sub->setnum2(num2);
+
+			commands.push_back(Sub);
+
 			txt1->Clear();
-			txt1->AppendText(processor->GetSubtraction(num1, num2));
+			txt1->AppendText(commands[0]->Execute());
+			//txt1->AppendText(processor->GetSubtraction(num1, num2));
+			commands.pop_back();
+			delete Sub;
 		}
 		else if (sym == "/")
 		{
+			_div* Div = new _div();
+
 			num1 = wxAtoi(_num1);
 			num2 = wxAtoi(_num2);
+
+			Div->setnum1(num1);
+			Div->setnum2(num2);
+
+			commands.push_back(Div);
+
 			txt1->Clear();
-			txt1->AppendText(processor->GetDivide(num1, num2));
+			txt1->AppendText(commands[0]->Execute());
+			//txt1->AppendText(processor->GetDivide(num1, num2));
+			commands.pop_back();
+			delete Div;
 		}
 		else if (sym == "*")
 		{
+			mult* Mult = new mult();
 			num1 = wxAtoi(_num1);
 			num2 = wxAtoi(_num2);
+
+			Mult->setnum1(num1);
+			Mult->setnum2(num2);
+
+			commands.push_back(Mult);
+
 			txt1->Clear();
-			txt1->AppendText(processor->GetMultiply(num1, num2));
+			txt1->AppendText(commands[0]->Execute());
+			//txt1->AppendText(processor->GetMultiply(num1, num2));
+			commands.pop_back();
+			delete Mult;
 		}
 		_num2.Clear();
 		_num1.Clear();

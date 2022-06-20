@@ -129,15 +129,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="add.h" />
     <ClInclude Include="buttonfactory.h" />
     <ClInclude Include="CalcApp.h" />
+    <ClInclude Include="div.h" />
+    <ClInclude Include="IBaseCommand.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="mult.h" />
     <ClInclude Include="Processor.h" />
+    <ClInclude Include="sub.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="add.cpp" />
     <ClCompile Include="buttonfactory.cpp" />
     <ClCompile Include="CalcApp.cpp" />
+    <ClCompile Include="div.cpp" />
+    <ClCompile Include="IBaseCommand.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="mult.cpp" />
+    <ClCompile Include="sub.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
