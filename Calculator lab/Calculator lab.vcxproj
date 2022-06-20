@@ -104,12 +104,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\stets\OneDrive\Desktop\fullsail\1. MIDTERM STUFF\2. Software Engineering\wxWidgets-3.1.6\include; C:\Users\stets\OneDrive\Desktop\fullsail\1. MIDTERM STUFF\2. Software Engineering\wxWidgets-3.1.6\include\msvc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\stets\OneDrive\Documents\fullsail\1. MIDTERM STUFF\2. Software Engineering\wxWidgets-3.1.6\include; C:\Users\stets\OneDrive\Documents\fullsail\1. MIDTERM STUFF\2. Software Engineering\wxWidgets-3.1.6\include\msvc</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\stets\OneDrive\Desktop\fullsail\1. MIDTERM STUFF\2. Software Engineering\wxWidgets-3.1.6\lib\vc_x64_lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\stets\OneDrive\Documents\fullsail\1. MIDTERM STUFF\2. Software Engineering\wxWidgets-3.1.6\lib\vc_x64_lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
