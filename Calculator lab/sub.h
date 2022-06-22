@@ -10,7 +10,6 @@ public:
 	sub() {
 
 	}
-
 	void setnum1(int num) {
 		_num1 = num;
 	}

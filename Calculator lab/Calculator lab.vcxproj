@@ -147,6 +147,7 @@
     <ClCompile Include="IBaseCommand.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mult.cpp" />
+    <ClCompile Include="Processor.cpp" />
     <ClCompile Include="sub.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

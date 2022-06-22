@@ -1,6 +1,5 @@
 #pragma once
 #include<string>
-#include "IBaseCommand.h";
 class Processor
 {
 private:
@@ -104,7 +103,5 @@ public:
 
 	}
 };
-
-Processor* Processor::_processor = nullptr;
 
 
